@@ -1,0 +1,763 @@
+/* =========================================
+   Variables & Reset
+   ========================================= */
+:root {
+    /* Colors */
+    --primary-color: #003366; /* Deep Blue */
+    --primary-light: #004d99;
+    --secondary-color: #00AEEF; /* Light Blue / Cyan */
+    --accent-color: #FF6600; /* Orange */
+    --text-color: #333333;
+    --text-light: #666666;
+    --light-bg: #F5F7FA;
+    --white: #FFFFFF;
+    --glass-bg: rgba(255, 255, 255, 0.9);
+    --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    --shadow-hover: 0 10px 20px rgba(0, 0, 0, 0.15);
+
+    /* Typography */
+    --font-main: 'Inter', sans-serif;
+
+    /* Spacing */
+    --section-padding: 80px 0;
+    --border-radius: 12px;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: var(--font-main);
+    color: var(--text-color);
+    line-height: 1.6;
+    overflow-x: hidden;
+    background-color: var(--white);
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+    transition: all 0.3s ease;
+}
+
+ul {
+    list-style: none;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* =========================================
+   Buttons & Components
+   ========================================= */
+.btn {
+    display: inline-block;
+    padding: 12px 30px;
+    border-radius: 50px;
+    font-weight: 600;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    border: none;
+    text-align: center;
+}
+
+.btn-primary {
+    background: linear-gradient(135deg, var(--primary-color), var(--primary-light));
+    color: var(--white);
+    box-shadow: 0 4px 15px rgba(0, 51, 102, 0.3);
+}
+
+.btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(0, 51, 102, 0.4);
+}
+
+.btn-secondary {
+    background: linear-gradient(135deg, var(--secondary-color), #0099cc);
+    color: var(--white);
+    box-shadow: 0 4px 15px rgba(0, 174, 239, 0.3);
+}
+
+.btn-secondary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(0, 174, 239, 0.4);
+}
+
+.section-title {
+    font-size: 2.5rem;
+    color: var(--primary-color);
+    text-align: center;
+    margin-bottom: 1rem;
+    font-weight: 700;
+}
+
+.section-subtitle {
+    text-align: center;
+    color: var(--text-light);
+    margin-bottom: 4rem;
+    font-size: 1.2rem;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* =========================================
+   Header
+   ========================================= */
+#header {
+    background: var(--glass-bg);
+    backdrop-filter: blur(10px);
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+    padding: 15px 0;
+}
+
+.header-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo h1 {
+    font-size: 1.5rem;
+    color: var(--primary-color);
+    font-weight: 800;
+}
+
+.logo .highlight {
+    color: var(--secondary-color);
+}
+
+.nav-menu ul {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+}
+
+.nav-menu a {
+    font-weight: 500;
+    color: var(--primary-color);
+}
+
+.nav-menu a:hover {
+    color: var(--secondary-color);
+}
+
+.menu-toggle {
+    display: none;
+    font-size: 1.5rem;
+    color: var(--primary-color);
+    cursor: pointer;
+}
+
+/* =========================================
+   Hero Section
+   ========================================= */
+.hero {
+    padding: 180px 0 100px;
+    background: linear-gradient(180deg, rgba(245,247,250,1) 0%, rgba(255,255,255,1) 100%);
+    position: relative;
+    overflow: hidden;
+}
+
+/* Background Abstract decoration */
+.hero::before {
+    content: '';
+    position: absolute;
+    top: -100px;
+    right: -100px;
+    width: 600px;
+    height: 600px;
+    background: radial-gradient(circle, rgba(0,174,239,0.1) 0%, rgba(255,255,255,0) 70%);
+    border-radius: 50%;
+    z-index: 0;
+}
+
+.hero-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 50px;
+    position: relative;
+    z-index: 1;
+}
+
+.hero-content {
+    flex: 1;
+}
+
+.hero-content h1 {
+    font-size: 3.5rem;
+    line-height: 1.2;
+    margin-bottom: 1.5rem;
+    color: var(--primary-color);
+    font-weight: 800;
+}
+
+.hero-subtitle {
+    font-size: 1.25rem;
+    color: var(--text-light);
+    margin-bottom: 2.5rem;
+}
+
+.hero-image {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+}
+
+.hero-image img {
+    border-radius: 20px;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+    animation: float 6s ease-in-out infinite;
+}
+
+@keyframes float {
+    0% { transform: translateY(0px); }
+    50% { transform: translateY(-20px); }
+    100% { transform: translateY(0px); }
+}
+
+/* =========================================
+   Services Section
+   ========================================= */
+.services {
+    padding: 100px 0;
+    background-color: #F5F7FA; /* Light gray background matching reference */
+}
+
+.services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 30px;
+}
+
+.service-card {
+    background: var(--white);
+    padding: 50px 40px;
+    border-radius: 12px;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.03); /* Subtle shadow */
+    transition: all 0.3s ease;
+    text-align: left; /* Aligned left as per image */
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+}
+
+.service-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 30px rgba(0,0,0,0.08);
+}
+
+.service-card .icon {
+    font-size: 2rem;
+    color: var(--white);
+    background-color: var(--secondary-color);
+    width: 50px;
+    height: 50px;
+    border-radius: 8px; /* Slightly rounded square */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 25px;
+}
+
+/* Update icons to be simple blue text if using fontawesome directly without bg in image reference, 
+   BUT image shows blue icons. Let's stick to simple clear blue icons. 
+   Actually, looking closely at "Diseño...", it looks like a blue icon. 
+   Let's use just the color for the icon text. */
+.service-card .icon {
+    background: none;
+    color: var(--secondary-color);
+    font-size: 2.5rem;
+    width: auto;
+    height: auto;
+    padding: 0;
+}
+
+.service-card h3 {
+    margin-bottom: 15px;
+    color: #1A202C; /* Darker heading */
+    font-size: 1.25rem;
+    font-weight: 700;
+}
+
+.service-card p {
+    color: #4A5568; /* Gray text */
+    font-size: 0.95rem;
+    line-height: 1.6;
+}
+
+/* Special Card Style */
+.service-card-special {
+    background-color: #E6F0FA; /* Light blue background */
+    align-items: center;
+    text-align: center;
+    justify-content: center;
+}
+
+.service-card-special .icon-special {
+    background-color: var(--secondary-color);
+    color: var(--white);
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+    margin-bottom: 20px;
+}
+
+.service-card-special h3 {
+    color: #1A202C;
+}
+
+.service-card-special p {
+    font-size: 0.9rem;
+    max-width: 80%;
+}
+
+/* =========================================
+   Why Choose Us
+   ========================================= */
+.why-choose-us {
+    padding: var(--section-padding);
+    background-color: var(--light-bg);
+}
+
+.benefits-list {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 40px;
+}
+
+.benefit-item {
+    background: var(--white);
+    padding: 30px;
+    border-radius: var(--border-radius);
+    box-shadow: 0 2px 10px rgba(0,0,0,0.03);
+    border-left: 5px solid var(--secondary-color);
+}
+
+.benefit-item h3 {
+    margin-bottom: 10px;
+    color: var(--primary-color);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+/* =========================================
+   Process Section
+   ========================================= */
+.process {
+    padding: var(--section-padding);
+}
+
+.process-steps {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+    position: relative;
+}
+
+.process-steps::before {
+    content: '';
+    position: absolute;
+    top: 40px;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: #e0e0e0;
+    z-index: 0;
+    display: none; /* Hidden on mobile, shown on desktop via media query could be complex, simplifying */
+}
+
+/* Desktop line connector workaround */
+@media (min-width: 992px) {
+    .process-steps::before {
+        display: block;
+    }
+}
+
+.step {
+    background: var(--white);
+    text-align: center;
+    position: relative;
+    z-index: 1;
+    flex: 1;
+    padding: 0 10px;
+}
+
+.step-number {
+    width: 80px;
+    height: 80px;
+    background: var(--primary-color);
+    color: var(--white);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin: 0 auto 20px;
+    border: 5px solid var(--white);
+    box-shadow: 0 0 0 5px var(--light-bg);
+}
+
+.step:nth-child(2) .step-number { background: #004d99; }
+.step:nth-child(3) .step-number { background: #0066cc; }
+.step:nth-child(4) .step-number { background: var(--secondary-color); }
+
+.step h3 {
+    margin-bottom: 10px;
+    color: var(--primary-color);
+}
+
+/* =========================================
+   Entrepreneurs Section
+   ========================================= */
+.entrepreneurs {
+    padding: 100px 0;
+    background: linear-gradient(rgba(0,51,102,0.9), rgba(0,51,102,0.95)), url('https://images.unsplash.com/photo-1556761175-5973dc0f32e7?ixlib=rb-1.2.1&auto=format&fit=crop&w=1920&q=80'); /* Placeholder bg */
+    background-size: cover;
+    background-attachment: fixed;
+    color: var(--white);
+    text-align: center;
+}
+
+.entrepreneurs h2 {
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+}
+
+.highlight-text {
+    font-size: 1.5rem;
+    font-weight: 300;
+    margin-bottom: 40px;
+    font-style: italic;
+    color: #e0e0e0;
+}
+
+.niches-list {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.niches-list li {
+    background: rgba(255,255,255,0.1);
+    backdrop-filter: blur(5px);
+    padding: 10px 20px;
+    border-radius: 50px;
+    border: 1px solid rgba(255,255,255,0.2);
+    font-size: 1.1rem;
+}
+
+/* =========================================
+   Contact Section
+   ========================================= */
+.contact {
+    padding: var(--section-padding);
+}
+
+.contact-wrapper {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 50px;
+    background: var(--white);
+    border-radius: 20px;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.08);
+    overflow: hidden;
+}
+
+.contact-info {
+    background: var(--primary-color);
+    padding: 60px 40px;
+    color: var(--white);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.contact-info h3 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+}
+
+.contact-info p {
+    margin-bottom: 2rem;
+    opacity: 0.9;
+}
+
+.whatsapp-big-btn {
+    background: #25D366;
+    border: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    align-self: flex-start;
+    box-shadow: 0 4px 15px rgba(37, 211, 102, 0.4);
+}
+
+.whatsapp-big-btn:hover {
+    background: #128C7E;
+    color: white;
+}
+
+.contact-form {
+    padding: 60px 40px;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    color: var(--primary-color);
+    font-weight: 500;
+}
+
+.form-group input,
+.form-group textarea {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    font-family: inherit;
+    font-size: 1rem;
+    transition: border-color 0.3s;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+    outline: none;
+    border-color: var(--secondary-color);
+}
+
+.form-group textarea {
+    resize: vertical;
+}
+
+/* =========================================
+   Footer & Floating Button
+   ========================================= */
+footer {
+    background: #002244;
+    color: rgba(255,255,255,0.6);
+    text-align: center;
+    padding: 30px 0;
+    font-size: 0.9rem;
+}
+
+.whatsapp-float {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    background: #25D366;
+    color: #FFF;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 35px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+    z-index: 100;
+    transition: all 0.3s ease;
+}
+
+.whatsapp-float:hover {
+    transform: scale(1.1);
+    background: #128C7E;
+}
+
+.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.animate-on-scroll {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+/* =========================================
+   Responsive Media Queries
+   ========================================= */
+@media (max-width: 992px) {
+    .section-title { font-size: 2rem; }
+    
+    .hero { padding-top: 140px; }
+    
+    .hero-container {
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    .benefits-list { grid-template-columns: 1fr; }
+    
+    .process-steps {
+        flex-direction: column;
+        gap: 40px;
+    }
+    
+    .step::after { display: none; } /* Remove desktop connector */
+    
+    .contact-wrapper { grid-template-columns: 1fr; }
+}
+
+@media (max-width: 768px) {
+    .nav-menu {
+        position: fixed;
+        left: -100%;
+        top: 70px;
+        width: 100%;
+        background: var(--white);
+        padding: 20px;
+        box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        transition: 0.3s;
+    }
+    
+    .nav-menu.active { left: 0; }
+    
+    .nav-menu ul {
+        flex-direction: column;
+        width: 100%;
+    }
+    
+    .menu-toggle { display: block; }
+    
+    .hero-content h1 { font-size: 2.5rem; }
+    
+    .contact { padding: 40px 0; }
+    
+    .contact-info, .contact-form { padding: 40px 20px; }
+}
+
+@media (max-width: 480px) {
+    .hero-content h1 { font-size: 2rem; }
+    .section-title { font-size: 1.8rem; }
+}
+
+/* =========================================
+   Toast Notification
+   ========================================= */
+.toast-notification {
+    position: fixed;
+    top: 100px;
+    right: 30px;
+    background: linear-gradient(135deg, #10b981, #059669);
+    color: white;
+    padding: 20px 30px;
+    border-radius: 12px;
+    box-shadow: 0 10px 40px rgba(16, 185, 129, 0.4);
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    z-index: 10000;
+    animation: slideInRight 0.5s ease-out, fadeOut 0.5s ease-in 3.5s;
+    opacity: 0;
+    transform: translateX(400px);
+    min-width: 300px;
+    max-width: 400px;
+}
+
+.toast-notification.show {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+.toast-icon {
+    font-size: 2rem;
+    flex-shrink: 0;
+}
+
+.toast-content {
+    flex: 1;
+}
+
+.toast-title {
+    font-weight: 700;
+    font-size: 1.1rem;
+    margin-bottom: 4px;
+}
+
+.toast-message {
+    font-size: 0.9rem;
+    opacity: 0.95;
+    line-height: 1.4;
+}
+
+.toast-close {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 1.5rem;
+    cursor: pointer;
+    padding: 0;
+    width: 24px;
+    height: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0.8;
+    transition: opacity 0.2s;
+}
+
+.toast-close:hover {
+    opacity: 1;
+}
+
+@keyframes slideInRight {
+    from {
+        opacity: 0;
+        transform: translateX(400px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes fadeOut {
+    from {
+        opacity: 1;
+    }
+    to {
+        opacity: 0;
+        transform: translateX(400px);
+    }
+}
+
+@media (max-width: 768px) {
+    .toast-notification {
+        right: 15px;
+        left: 15px;
+        min-width: auto;
+        max-width: none;
+    }
+}
